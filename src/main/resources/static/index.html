@@ -3,35 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Formulario de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <style>
+        .form-container {
+            max-width: 50%;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Crear Usuario</h1>
-    <form id="userForm">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required><br><br>
-
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
-
-        <button type="submit">Enviar</button>
+    <div class="container">
+        <form action=" " id="userForm">
+            <div class="form-container box" id="userForm">
+                <h1 class="title">Crear Usuario</h1>
+                <div class="field">
+                    <label class="label" for="id">ID:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="id" name="id" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="nombre">Nombre:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="nombre" name="nombre" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" type="submit">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="" id="filterForm">
+            <div class="form-container box" id="filterForm">
+                <h2 class="title">Buscar Usuario por ID</h2>
+                <div class="field">
+                    <label class="label" for="filterId">ID:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="filterId" name="filterId" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="filterName">Nombre:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="filterName" name="filterName" readonly>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-link" type="submit">Buscar</button>
+                    </div>
+                </div>
+            </div>
+    </div>
     </form>
-
-    
-
-    <h2>Buscar Usuario por ID</h2>
-    <form id="filterForm">
-        <label for="filterId">ID:</label>
-        <input type="number" id="filterId" name="filterId" required><br><br>
-        
-        <label for="filterName">Nombre:</label>
-        <input type="text" id="filterName" name="filterName" readonly><br><br>
-        
-        <button type="submit">Buscar</button>
-    </form>
-
     <script src="app.js"></script>
 </body>
 

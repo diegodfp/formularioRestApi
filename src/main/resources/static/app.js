@@ -1,9 +1,11 @@
-const URL_API = "http://localhost:8080/api/users"; // Asegúrate de que la URL sea correcta
+const URL_API = "http://localhost:8080/api/users"; 
 
-// Función para manejar el envío del formulario
+const frmRegistro = document.querySelector('#userForm');
 const postUser = async (userData) => {
     try {
+        console.log(userData);
         const response = await fetch(URL_API, {
+            
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,20 +25,20 @@ const postUser = async (userData) => {
     }
 };
 
-// Manejador del evento submit del formulario
+
 document.getElementById('userForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío tradicional del formulario
+    event.preventDefault(); 
+    
+    // const userData = {
+    //     id: document.getElementById('id').value,
+    //     nombre: document.getElementById('nombre').value
+    // };
 
-    const userData = {
-        id: document.getElementById('id').value,
-        nombre: document.getElementById('nombre').value
-    };
-
-    postUser(userData);
+    postUser(Object.fromEntries(new FormData(frmRegistro).entries()));
 });
 
 
-// Función para obtener un usuario por ID
+
 const getUserById = async (id) => {
     try {
         const response = await fetch(`${URL_API}/${id}`);
@@ -46,7 +48,7 @@ const getUserById = async (id) => {
             document.getElementById('filterName').value = user.nombre;
         } else if (response.status === 404) {
             alert('Usuario no encontrado');
-            document.getElementById('filterName').value = ''; // Limpiar el campo si no se encuentra
+            document.getElementById('filterName').value = ''; 
         } else {
             console.error('Error al buscar el usuario:', response.status);
         }
@@ -56,9 +58,9 @@ const getUserById = async (id) => {
     }
 };
 
-// Manejador del evento submit para filtrar por ID
+
 document.getElementById('filterForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío tradicional del formulario
+    event.preventDefault(); 
 
     const userId = document.getElementById('filterId').value;
     console.log(userId);
